@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="44" viewBox="0 0 440 44" role="img" aria-label="always-learning">
+  <text x="0" y="29" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace" font-size="15" fill="#00add8">03</text>
+  <text x="34" y="29" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace" font-size="21" font-weight="700" fill="#8b949e"><tspan fill="#6e7681">~/</tspan>always-learning</text>
+  <path d="M268,22 L350,22 L364,10 L426,10" fill="none" stroke="#6e7681" stroke-opacity=".5" stroke-width="1.5"/>
+  <circle cx="264" cy="22" r="3.5" fill="none" stroke="#00add8" stroke-width="1.5"/>
+  <circle cx="430" cy="10" r="3.5" fill="none" stroke="#00add8" stroke-width="1.5"/>
+</svg>

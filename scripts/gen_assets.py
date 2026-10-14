@@ -35,9 +35,8 @@ def intro():
   <style>@keyframes move {{ to {{ transform: translateX({n*size*ADV:.1f}px); }} }}</style>'''
 
 
-def wafer():
+def wafer(w, h, cx, cy, r, pitch):
     """A silicon wafer full of dies under a rainbow sheen, with one die (JG-9) highlighted."""
-    cx, cy, r, pitch = 726, 135, 118, 19
     flat = f"M{cx-r*0.28:.1f},{cy+r*0.96:.1f} A{r},{r} 0 1 1 {cx+r*0.28:.1f},{cy+r*0.96:.1f} Z"
     dies, hl = [], None
     for gy in range(-7, 7):
@@ -56,8 +55,8 @@ def wafer():
     <linearGradient id="rb" x1="0" y1="0" x2="1" y2="1">{stops}</linearGradient>
     <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
     <filter id="hg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
-    <radialGradient id="wg" cx="{cx/W:.3f}" cy=".5" r=".32"><stop offset="0" stop-color="#d2a8ff" stop-opacity=".18"/><stop offset="1" stop-color="#d2a8ff" stop-opacity="0"/></radialGradient>'''
-    art = f'''<rect width="{W}" height="{H}" fill="url(#wg)"/>
+    <radialGradient id="wg" cx="{cx/w:.3f}" cy="{cy/h:.3f}" r=".32"><stop offset="0" stop-color="#d2a8ff" stop-opacity=".18"/><stop offset="1" stop-color="#d2a8ff" stop-opacity="0"/></radialGradient>'''
+    art = f'''<rect width="{w}" height="{h}" fill="url(#wg)"/>
     <g clip-path="url(#wf)">
       <rect x="{cx-r}" y="{cy-r}" width="{2*r}" height="{2*r}" fill="#121a2c"/>
       {"".join(dies)}
@@ -75,11 +74,17 @@ def wafer():
     return defs, art, css
 
 
-def header():
-    defs, art, css = wafer()
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Hi, I'm Jason. i like pretty colored words. Always learning, currently building.">
+def header(mobile=False):
+    """Desktop: intro left, wafer right. Mobile: wafer on top, intro stacked below at a size that stays legible."""
+    if mobile:
+        w, h, dy = 480, 380, 118
+        defs, art, css = wafer(w, h, 340, 100, 78, 12)
+    else:
+        w, h, dy = W, H, 0
+        defs, art, css = wafer(w, h, 726, 135, 118, 19)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Hi, I'm Jason. i like pretty colored words. Always learning, currently building.">
   <defs>
-    <clipPath id="card"><rect width="{W}" height="{H}" rx="18"/></clipPath>
+    <clipPath id="card"><rect width="{w}" height="{h}" rx="18"/></clipPath>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#101a2c"/></linearGradient>
     <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff" fill-opacity=".045"/></pattern>
     {defs}
@@ -94,19 +99,22 @@ def header():
     </style>
   </defs>
   <g clip-path="url(#card)">
-    <rect width="{W}" height="{H}" fill="url(#bg)"/>
-    <rect width="{W}" height="{H}" fill="url(#dots)"/>
+    <rect width="{w}" height="{h}" fill="url(#bg)"/>
+    <rect width="{w}" height="{h}" fill="url(#dots)"/>
     {art}
   </g>
-  {intro()}
+  <g transform="translate(0,{dy})">{intro()}</g>
 </svg>
 '''
 
 
 # ---------------------------------------------------------- section titles
-def section(num, label):
-    """Numbered ~/label heading with a circuit trace, in mid-tones that read on light and dark."""
-    w, h = 900, 44
+def section(num, label, mobile=False):
+    """Numbered ~/label heading with a circuit trace, in mid-tones that read on light and dark.
+
+    The mobile variant has a narrower canvas, so the same text scales down far less on a phone.
+    """
+    w, h = (440, 44) if mobile else (900, 44)
     x0 = 34 + (len(label) + 2) * 21 * ADV + 4
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{label}">
   <text x="0" y="29" font-family="{MONO}" font-size="15" fill="{GO}">{num}</text>
@@ -124,9 +132,10 @@ SECTIONS = [("01", "about"), ("02", "toolbox"), ("03", "always-learning"),
 if __name__ == "__main__":
     out = sys.argv[1]
     os.makedirs(out, exist_ok=True)
-    with open(f"{out}/header.svg", "w") as f:
-        f.write(header())
-    for num, label in SECTIONS:
-        with open(f"{out}/section-{label}.svg", "w") as f:
-            f.write(section(num, label))
+    for suffix, mobile in (("", False), ("-mobile", True)):
+        with open(f"{out}/header{suffix}.svg", "w") as f:
+            f.write(header(mobile))
+        for num, label in SECTIONS:
+            with open(f"{out}/section-{label}{suffix}.svg", "w") as f:
+                f.write(section(num, label, mobile))
     print("ok")
