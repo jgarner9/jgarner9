@@ -74,14 +74,9 @@ def wafer(w, h, cx, cy, r, pitch):
     return defs, art, css
 
 
-def header(mobile=False):
-    """Desktop: intro left, wafer right. Mobile: wafer on top, intro stacked below at a size that stays legible."""
-    if mobile:
-        w, h, dy = 480, 380, 118
-        defs, art, css = wafer(w, h, 340, 100, 78, 12)
-    else:
-        w, h, dy = W, H, 0
-        defs, art, css = wafer(w, h, 726, 135, 118, 19)
+def header():
+    w, h = W, H
+    defs, art, css = wafer(w, h, 726, 135, 118, 19)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Hi, I'm Jason. i like pretty colored words. Always learning, currently building.">
   <defs>
     <clipPath id="card"><rect width="{w}" height="{h}" rx="18"/></clipPath>
@@ -103,7 +98,7 @@ def header(mobile=False):
     <rect width="{w}" height="{h}" fill="url(#dots)"/>
     {art}
   </g>
-  <g transform="translate(0,{dy})">{intro()}</g>
+  {intro()}
 </svg>
 '''
 
@@ -132,9 +127,9 @@ SECTIONS = [("01", "about"), ("02", "toolbox"), ("03", "always-learning"),
 if __name__ == "__main__":
     out = sys.argv[1]
     os.makedirs(out, exist_ok=True)
+    with open(f"{out}/header.svg", "w") as f:
+        f.write(header())
     for suffix, mobile in (("", False), ("-mobile", True)):
-        with open(f"{out}/header{suffix}.svg", "w") as f:
-            f.write(header(mobile))
         for num, label in SECTIONS:
             with open(f"{out}/section-{label}{suffix}.svg", "w") as f:
                 f.write(section(num, label, mobile))
