@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="44" viewBox="0 0 900 44" role="img" aria-label="about">
+  <text x="0" y="29" font-family='ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace' font-size="15" fill="#00add8">01</text>
+  <text x="34" y="29" font-family='ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace' font-size="21" font-weight="700" fill="#8b949e"><tspan fill="#6e7681">~/</tspan>about</text>
+  <g fill="none" stroke="#6e7681" stroke-opacity=".45" stroke-width="1.5">
+    <path d="M143,22 L810,22 L824,10 L886,10"/>
+  </g>
+  <circle cx="139" cy="22" r="3.5" fill="none" stroke="#00add8" stroke-width="1.5"/>
+  <circle cx="890" cy="10" r="3.5" fill="none" stroke="#00add8" stroke-width="1.5"/>
+</svg>
