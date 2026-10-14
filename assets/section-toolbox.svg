@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="44" viewBox="0 0 900 44" role="img" aria-label="toolbox">
-  <text x="0" y="29" font-family='ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace' font-size="15" fill="#00add8">02</text>
-  <text x="34" y="29" font-family='ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace' font-size="21" font-weight="700" fill="#8b949e"><tspan fill="#6e7681">~/</tspan>toolbox</text>
-  <g fill="none" stroke="#6e7681" stroke-opacity=".45" stroke-width="1.5">
-    <path d="M168,22 L810,22 L824,10 L886,10"/>
-  </g>
-  <circle cx="164" cy="22" r="3.5" fill="none" stroke="#00add8" stroke-width="1.5"/>
-  <circle cx="890" cy="10" r="3.5" fill="none" stroke="#00add8" stroke-width="1.5"/>
+  <defs><linearGradient id="rb" x1="0" y1="0" x2="1" y2="0"><stop offset="0.00" stop-color="#ff7b72"/><stop offset="0.25" stop-color="#d2a8ff"/><stop offset="0.50" stop-color="#ffa657"/><stop offset="0.75" stop-color="#7ee787"/><stop offset="1.00" stop-color="#79c0ff"/></linearGradient></defs>
+  <text x="0" y="29" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace" font-size="15" fill="#00add8">02</text>
+  <text x="34" y="29" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace" font-size="21" font-weight="700" fill="#8b949e"><tspan fill="#6e7681">~/</tspan>toolbox</text>
+  <path d="M167,22 L810,22 L824,10 L886,10" fill="none" stroke="url(#rb)" stroke-opacity=".9" stroke-width="1.5"/>
+  <circle cx="163" cy="22" r="3.5" fill="none" stroke="#ff7b72" stroke-width="1.5"/>
+  <circle cx="890" cy="10" r="3.5" fill="none" stroke="#79c0ff" stroke-width="1.5"/>
 </svg>
