@@ -6,8 +6,8 @@ W, H = 900, 270
 MONO = 'ui-monospace, SFMono-Regular, Menlo, Consolas, &quot;Liberation Mono&quot;, monospace'
 SANS = '-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Inter, Helvetica, Arial, sans-serif'
 GO = "#00add8"
-# The tagline, word by word, in its syntax-highlight colours. Also the rainbow palette.
-TAG = [("i", "#ff7b72"), ("like", "#d2a8ff"), ("pretty", "#ffa657"), ("colored", "#7ee787"), ("words", "#79c0ff")]
+TAGLINE = "i like pretty colored words"
+TAGLINE_COLOR = "#c9d1d9"
 ADV = 0.6  # monospace advance, in em
 
 
@@ -19,12 +19,9 @@ def intro():
     typing effect never depends on the viewer's font (Safari ignores textLength on tspans).
     """
     size, x, y, step, d0 = 22, 60, 182, 0.075, 1.1
-    text = " ".join(w for w, _ in TAG)
-    colors = []
-    for w, c in TAG:
-        colors += [c] * len(w) + [None]
+    text = TAGLINE
     chars = "".join(
-        f'<text class="ch" style="animation-delay:{d0 + i*step:.3f}s" x="{x + i*size*ADV:.1f}" y="{y}" font-size="{size}" fill="{colors[i]}">{ch}</text>'
+        f'<text class="ch" style="animation-delay:{d0 + i*step:.3f}s" x="{x + i*size*ADV:.1f}" y="{y}" font-size="{size}" fill="{TAGLINE_COLOR}">{ch}</text>'
         for i, ch in enumerate(text) if ch != " ")
     n = len(text)
     return f'''<g font-family="{MONO}">
@@ -108,17 +105,15 @@ def header():
 
 # ---------------------------------------------------------- section titles
 def section(num, label):
-    """Numbered ~/label heading with a rainbow trace, in mid-tones that read on light and dark."""
+    """Numbered ~/label heading with a circuit trace, in mid-tones that read on light and dark."""
     w, h = 900, 44
     x0 = 34 + (len(label) + 2) * 21 * ADV + 4
-    stops = "".join(f'<stop offset="{i/(len(TAG)-1):.2f}" stop-color="{c}"/>' for i, (_, c) in enumerate(TAG))
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{label}">
-  <defs><linearGradient id="rb" x1="0" y1="0" x2="1" y2="0">{stops}</linearGradient></defs>
   <text x="0" y="29" font-family="{MONO}" font-size="15" fill="{GO}">{num}</text>
   <text x="34" y="29" font-family="{MONO}" font-size="21" font-weight="700" fill="#8b949e"><tspan fill="#6e7681">~/</tspan>{label}</text>
-  <path d="M{x0+16:.0f},22 L{w-90},22 L{w-76},10 L{w-14},10" fill="none" stroke="url(#rb)" stroke-opacity=".9" stroke-width="1.5"/>
-  <circle cx="{x0+12:.0f}" cy="22" r="3.5" fill="none" stroke="{TAG[0][1]}" stroke-width="1.5"/>
-  <circle cx="{w-10}" cy="10" r="3.5" fill="none" stroke="{TAG[-1][1]}" stroke-width="1.5"/>
+  <path d="M{x0+16:.0f},22 L{w-90},22 L{w-76},10 L{w-14},10" fill="none" stroke="#6e7681" stroke-opacity=".5" stroke-width="1.5"/>
+  <circle cx="{x0+12:.0f}" cy="22" r="3.5" fill="none" stroke="{GO}" stroke-width="1.5"/>
+  <circle cx="{w-10}" cy="10" r="3.5" fill="none" stroke="{GO}" stroke-width="1.5"/>
 </svg>
 '''
 
