@@ -4,9 +4,9 @@
 
 <img src="assets/section-about.svg" alt="about" width="100%">
 
-I'm working my way toward a career as a **backend engineer**. I like the parts of software most people never see: APIs, services, and the tools that keep everything running. My goal is to build systems that are simple, reliable, and fast.
+I'm working my way toward a career as a backend engineer. I like the parts of software most people never see: APIs, services, and the tools that keep everything running. My goal is to build systems that are simple, reliable, and fast.
 
-Most of my time goes into **Go**. I'm getting better at writing clean, well-tested code and learning how real production systems are put together.
+Most of my time goes into Go. I'm getting better at writing clean, idiomatic, well-tested code and learning how real production systems are put together. Go (in my opinion) is the perfect level of high-level abstraction, but low-level control.
 
 <img src="assets/section-toolbox.svg" alt="toolbox" width="100%">
 
@@ -35,11 +35,11 @@ Most of my time goes into **Go**. I'm getting better at writing clean, well-test
   </tr>
 </table>
 
-I'm a Linux person through and through. I run Arch (btw), live in the terminal, and Neovim is my whole dev environment.
+I'm a Linux person through and through. I run Arch (btw), live in the terminal, and Neovim is the basis of my dev environment.
 
 <img src="assets/section-always-learning.svg" alt="always learning" width="100%">
 
-In my spare time I'm usually **self-hosting** something on my home server or **tinkering with hardware**. Running my own stuff and taking things apart is the best way I've found to learn how systems actually work.
+In my spare time I'm usually self-hosting something on my home server or tinkering with hardware. Running my own stuff and taking things apart is the best way I've found to learn how systems actually work.
 
 <img src="assets/section-currently-building.svg" alt="currently building" width="100%">
 
@@ -58,11 +58,7 @@ In my spare time I'm usually **self-hosting** something on my home server or **t
   </tr>
   <tr>
     <td><a href="https://github.com/jgarner9/vimzer"><b>vimzer</b></a></td>
-    <td>Vim-style keyboard navigation for Chrome</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/jgarner9/bobby"><b>bobby</b></a></td>
-    <td>A self-hosted local LLM setup with Docker</td>
+    <td>Personal tool for Vim-style keyboard navigation for Chrome</td>
   </tr>
 </table>
 
