@@ -65,16 +65,24 @@ In my spare time I'm usually self-hosting something on my home server or tinkeri
 
 <table>
   <tr>
+    <td><a href="https://github.com/jgarner9/bud"><b>bud</b></a></td>
+    <td>My IDE: one small Go binary driving an isolated, headless Neovim, with eight languages ready to go</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/jgarner9/bud-plugins"><b>bud-plugins</b></a></td>
+    <td>The Claude plugin that teaches every Claude surface how I work: code style, planning, tools and releases</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/jgarner9/clod-template"><b>clod-template</b></a></td>
+    <td>A starter for keeping your Claude Code setup in a private repo and installing it on every machine</td>
+  </tr>
+  <tr>
     <td><a href="https://github.com/jgarner9/inventory-events-service"><b>inventory-events-service</b></a></td>
     <td>An event-driven Go microservice backed by RabbitMQ and PostgreSQL</td>
   </tr>
   <tr>
     <td><a href="https://github.com/jgarner9/godo"><b>godo</b></a></td>
     <td>A minimal todo manager for the terminal, written in Go</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/jgarner9/pretty-jsoner"><b>pretty-jsoner</b></a></td>
-    <td>A small Go CLI that pretty-prints JSON straight from your clipboard</td>
   </tr>
   <tr>
     <td><a href="https://github.com/jgarner9/vimzer"><b>vimzer</b></a></td>
